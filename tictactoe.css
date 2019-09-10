@@ -1,0 +1,48 @@
+h1, h3
+{
+    text-align: center;
+}
+
+/*margin-left and right centers the board in the middle*/
+table 
+{
+    border-collapse: collapse;
+    background-color: black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td 
+{
+    border: 3px solid white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 100%;;
+}
+
+/*
+Specific styling to display the X as pink and O as blue.
+Just temporary code for the basic layout of the game
+*/
+#box1
+{
+    color: deeppink;
+    border-color: white;
+}
+
+#box5, #box2
+{
+    color: Aqua;
+    border-color: white;
+}
+
+#box1, #box2, #box3, #box4, #box5, #box6
+{
+    border-bottom: 3px solid white;
+}
+
+#box1, #box2, #box4, #box5, #box7, #box8
+{
+    border-right: 3px solid white;
+}
