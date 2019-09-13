@@ -1,6 +1,18 @@
-h1, h3
+body 
+{
+    background-color: black;
+}
+
+h3
 {
     text-align: center;
+    color: grey;
+}
+
+h1
+{
+    text-align: center;
+    color: white;
 }
 
 /*margin-left and right centers the board in the middle*/
@@ -12,6 +24,11 @@ table
     margin-right: auto;
 }
 
+#nextPlayer
+{
+    color: firebrick;
+}
+
 td 
 {
     border: 3px solid white;
@@ -21,21 +38,7 @@ td
     font-size: 100%;;
 }
 
-/*
-Specific styling to display the X as pink and O as blue.
-Just temporary code for the basic layout of the game
-*/
-#box1
-{
-    color: deeppink;
-    border-color: white;
-}
 
-#box5, #box2
-{
-    color: Aqua;
-    border-color: white;
-}
 
 #box1, #box2, #box3, #box4, #box5, #box6
 {
