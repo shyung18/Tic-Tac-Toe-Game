@@ -1,16 +1,43 @@
 let currentPlayer = 'X';
 let board  = document.getElementsByTagName("td");
+let button = document.getElementsByTagName("button");
 
 /* Add onclick attribute to each box and adds X and O's accordingly with specific style for each*/
 for(let i=0; i<board.length; i++)
 {
+
+    document.onkeydown = function (e)
+    {
+        if(e.keyCode == '37' && document.activeElement.tabIndex-4 >= 0 && document.activeElement.tabIndex-4 < board.length)
+        {
+            board[document.activeElement.tabIndex-4].focus();
+        }
+        else if(e.keyCode == '39' && document.activeElement.tabIndex-2 >= 0 && document.activeElement.tabIndex-2 < board.length)
+        {
+            board[document.activeElement.tabIndex-2].focus();
+        }
+        else if(e.keyCode == '38' && document.activeElement.tabIndex-6 >= 0 && document.activeElement.tabIndex-6 < board.length)
+        {
+            board[document.activeElement.tabIndex-6].focus();
+        }
+        else if(e.keyCode == '40' && document.activeElement.tabIndex >= 0 && document.activeElement.tabIndex < board.length)
+        {
+            board[document.activeElement.tabIndex].focus();
+        }
+        else if(e.keyCode == '13' || e.keyCode == '32')
+        {
+            board[document.activeElement.tabIndex-3].click();
+        }
+    }
     board[i].onclick = function() 
     {
         if(currentPlayer === 'X'&& board[i].innerText==="")
         {
             board[i].innerHTML= 'X';
+            
             board[i].style.color = "firebrick";
             currentPlayer = 'O';
+            
             document.getElementById("nextPlayer").innerHTML = currentPlayer; 
             document.getElementById("nextPlayer").style.color = "dodgerblue";
 
@@ -22,6 +49,7 @@ for(let i=0; i<board.length; i++)
             currentPlayer = 'X';
             document.getElementById("nextPlayer").innerHTML = currentPlayer; 
             document.getElementById("nextPlayer").style.color = "firebrick";
+            
         }
 
         if(checkWinner())
@@ -29,12 +57,19 @@ for(let i=0; i<board.length; i++)
             /*Remove onclick attributes from each box elements so that you can't keep playing*/
             for(let j=0; j<board.length; j++)
             {
+                board[j].blur();
                 document.getElementsByTagName('td')[j].onclick = '';
             }
         }
+        
     }
     
+    
 }
+
+document.getElementById("button").addEventListener("click", function(){
+    window.location.reload();
+  });
 
 function checkWinner()
 {
@@ -52,15 +87,21 @@ function checkWinner()
         /* Display who the winner is depending on who ended the game*/
         if(currentPlayer === "X")
         {
-            let winner = document.createElement("H1");
+            let winner = document.createElement("p");
             winner.innerHTML = "O is the Winner";
+            winner.tabIndex = 12;
+            winner.id="winner";
             document.body.appendChild(winner);
+            document.getElementById('winner').focus();
         }
         else
         {
-            let winner = document.createElement("H1");
+            let winner = document.createElement("p");
             winner.innerHTML = "X is the Winner";
+            winner.tabIndex = 12;
+            winner.id="winner";
             document.body.appendChild(winner);
+            document.getElementById('winner').focus();
         }
         return true;
     }
@@ -69,6 +110,3 @@ function checkWinner()
         return false;
     }
 }
-
-
-
