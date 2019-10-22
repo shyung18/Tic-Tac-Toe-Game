@@ -2,10 +2,9 @@ let currentPlayer = 'X';
 let board  = document.getElementsByTagName("td");
 let button = document.getElementsByTagName("button");
 
-/* Add onclick attribute to each box and adds X and O's accordingly with specific style for each*/
 for(let i=0; i<board.length; i++)
 {
-
+    //Allow the user to move around the board and place the X and O's with the enter key
     document.onkeydown = function (e)
     {
         if(e.keyCode == '37' && document.activeElement.tabIndex-4 >= 0 && document.activeElement.tabIndex-4 < board.length)
@@ -29,6 +28,9 @@ for(let i=0; i<board.length; i++)
             board[document.activeElement.tabIndex-3].click();
         }
     }
+
+    
+    /* Add onclick attribute to each box and adds X and O's accordingly with specific style for each*/
     board[i].onclick = function() 
     {
         if(currentPlayer === 'X'&& board[i].innerText==="")
@@ -55,6 +57,7 @@ for(let i=0; i<board.length; i++)
         if(checkWinner())
         {
             /*Remove onclick attributes from each box elements so that you can't keep playing*/
+            //Also remove the focus on the boxes so that it highlights the winner alert instead
             for(let j=0; j<board.length; j++)
             {
                 board[j].blur();
@@ -67,6 +70,7 @@ for(let i=0; i<board.length; i++)
     
 }
 
+//Reloads the page when you click the restart button
 document.getElementById("button").addEventListener("click", function(){
     window.location.reload();
   });
