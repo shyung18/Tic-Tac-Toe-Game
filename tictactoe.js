@@ -97,40 +97,51 @@ document.getElementById("restart_button").addEventListener("click", function(){
 
 function checkWinner()
 {
+    let winner = document.createElement("p");
+    winner.tabIndex = 12;
+
     /* Checks all the possible ways to win. Does not check for ties */
-    if((board[0].innerText + board[1].innerText + board[2].innerText === 'XXX' || board[0].innerText + board[1].innerText + board[2].innerText === 'OOO') ||
-        (board[3].innerText + board[4].innerText + board[5].innerText === 'XXX' || board[3].innerText + board[4].innerText + board[5].innerText === 'OOO') ||
-        (board[6].innerText + board[7].innerText + board[8].innerText === 'XXX' || board[6].innerText + board[7].innerText + board[8].innerText === 'OOO') ||
-        (board[0].innerText + board[3].innerText + board[6].innerText === 'XXX' || board[0].innerText + board[3].innerText + board[6].innerText === 'OOO') ||
-        (board[1].innerText + board[4].innerText + board[7].innerText === 'XXX' || board[1].innerText + board[4].innerText + board[7].innerText === 'OOO') ||
-        (board[2].innerText + board[5].innerText + board[8].innerText === 'XXX' || board[2].innerText + board[5].innerText + board[8].innerText === 'OOO') ||
-        (board[0].innerText + board[4].innerText + board[8].innerText === 'XXX' || board[0].innerText + board[4].innerText + board[8].innerText === 'OOO') ||
-        (board[2].innerText + board[4].innerText + board[6].innerText === 'XXX' || board[2].innerText + board[4].innerText + board[6].innerText === 'OOO')
-    )
+    const winnerExist = (board[0].innerText + board[1].innerText + board[2].innerText === 'XXX' || board[0].innerText + board[1].innerText + board[2].innerText === 'OOO') ||
+                        (board[3].innerText + board[4].innerText + board[5].innerText === 'XXX' || board[3].innerText + board[4].innerText + board[5].innerText === 'OOO') ||
+                        (board[6].innerText + board[7].innerText + board[8].innerText === 'XXX' || board[6].innerText + board[7].innerText + board[8].innerText === 'OOO') ||
+                        (board[0].innerText + board[3].innerText + board[6].innerText === 'XXX' || board[0].innerText + board[3].innerText + board[6].innerText === 'OOO') ||
+                        (board[1].innerText + board[4].innerText + board[7].innerText === 'XXX' || board[1].innerText + board[4].innerText + board[7].innerText === 'OOO') ||
+                        (board[2].innerText + board[5].innerText + board[8].innerText === 'XXX' || board[2].innerText + board[5].innerText + board[8].innerText === 'OOO') ||
+                        (board[0].innerText + board[4].innerText + board[8].innerText === 'XXX' || board[0].innerText + board[4].innerText + board[8].innerText === 'OOO') ||
+                        (board[2].innerText + board[4].innerText + board[6].innerText === 'XXX' || board[2].innerText + board[4].innerText + board[6].innerText === 'OOO')
+
+    const noWinner = board[0].innerText !== "" && board[1].innerText !== "" && board[2].innerText !== "" 
+                    && board[3].innerText !== "" && board[4].innerText !== "" && board[5].innerText !== "" 
+                    && board[6].innerText !== "" && board[7].innerText !== ""&& board[8].innerText !== "";
+
+    if(winnerExist)
     {
         /* Display who the winner is depending on who ended the game*/
         if(currentPlayer === "X")
         {
-            let winner = document.createElement("p");
             winner.innerHTML = "O is the Winner";
-            winner.tabIndex = 12;
-            winner.id="winner";
-            document.body.appendChild(winner);
-            document.getElementById('winner').focus();
         }
         else
         {
-            let winner = document.createElement("p");
             winner.innerHTML = "X is the Winner";
-            winner.tabIndex = 12;
-            winner.id="winner";
-            document.body.appendChild(winner);
-            document.getElementById('winner').focus();
         }
+
+        document.body.appendChild(winner);
+        winner.focus();
+
+        return true;
+    }
+    else if(noWinner) 
+    {
+        winner.innerHTML = "Tie!";
+        document.body.appendChild(winner);
+        winner.focus();
+
         return true;
     }
     else
     {
+        //continue game
         return false;
     }
 }
