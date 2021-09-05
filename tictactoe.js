@@ -1,6 +1,7 @@
 let currentPlayer = 'X';
 let board  = document.getElementsByTagName("td");
 let restart_button = document.getElementsByTagName("restart_button");
+let next_player = document.getElementById("nextPlayer");
 
 //board = [3, 4, 5, 6, 7, 8, 9, 10, 11] where content equal the tabIndex
 for(let i=0; i<board.length; i++)
@@ -60,8 +61,8 @@ for(let i=0; i<board.length; i++)
             board[i].style.color = "firebrick";
             currentPlayer = 'O';
             
-            document.getElementById("nextPlayer").innerHTML = currentPlayer; 
-            document.getElementById("nextPlayer").style.color = "dodgerblue";
+            next_player.innerHTML = currentPlayer; 
+            next_player.style.color = "dodgerblue";
 
         }
         else if(currentPlayer === 'O'&& board[i].innerText==="")
@@ -69,9 +70,8 @@ for(let i=0; i<board.length; i++)
             board[i].innerHTML = 'O';
             board[i].style.color = "dodgerblue";
             currentPlayer = 'X';
-            document.getElementById("nextPlayer").innerHTML = currentPlayer; 
-            document.getElementById("nextPlayer").style.color = "firebrick";
-            
+            next_player.innerHTML = currentPlayer; 
+            next_player.style.color = "firebrick";
         }
 
         if(checkWinner())
