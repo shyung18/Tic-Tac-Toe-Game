@@ -1,39 +1,59 @@
 let currentPlayer = 'X';
 let board  = document.getElementsByTagName("td");
-let button = document.getElementsByTagName("button");
+let restart_button = document.getElementsByTagName("restart_button");
 
+//board = [3, 4, 5, 6, 7, 8, 9, 10, 11] where content equal the tabIndex
 for(let i=0; i<board.length; i++)
 {
     //Allow the user to move around the board and place the X and O's with the enter key
     document.onkeydown = function (e)
     {
-        if(e.keyCode == '37' && document.activeElement.tabIndex-4 >= 0 && document.activeElement.tabIndex-4 < board.length)
-        {
-            board[document.activeElement.tabIndex-4].focus();
+        const current_new_position = document.activeElement.tabIndex;
+
+        //ex. Go Left: If current tabIndex = 6, then board[6 - 4] = board[2] = 5, the left tabIndex.
+        const left_new_position = current_new_position - 4;
+        const right_new_position = current_new_position - 2;
+        const up_new_position = current_new_position - 6;
+        const enter_position = current_new_position - 3;
+
+        // All the positions (board index) has to be within 0 and 8
+        const goLeftCondition = left_new_position >= 0 && left_new_position < board.length;
+        const goRightCondition = right_new_position >= 0 && right_new_position < board.length;
+        const goUpCondition = up_new_position >=0 && up_new_position < board.length;
+        const goDownCondition = current_new_position >= 0 && current_new_position < board.length;
+
+        switch(e.key) {
+            case "Left":
+            case 'ArrowLeft':
+                goLeftCondition && board[left_new_position].focus();
+                break;
+            case "Right":
+            case 'ArrowRight':
+                goRightCondition && board[right_new_position].focus();
+                break;
+            case "Up":
+            case 'ArrowUp':
+                goUpCondition && board[up_new_position].focus();
+                break;
+            case "Down":
+            case 'ArrowDown':
+                goDownCondition && board[current_new_position].focus();
+                break;
+            case 'Enter':
+                board[enter_position].click();
+                break;            
         }
-        else if(e.keyCode == '39' && document.activeElement.tabIndex-2 >= 0 && document.activeElement.tabIndex-2 < board.length)
+
+        if(e.code == 'Space')
         {
-            board[document.activeElement.tabIndex-2].focus();
-        }
-        else if(e.keyCode == '38' && document.activeElement.tabIndex-6 >= 0 && document.activeElement.tabIndex-6 < board.length)
-        {
-            board[document.activeElement.tabIndex-6].focus();
-        }
-        else if(e.keyCode == '40' && document.activeElement.tabIndex >= 0 && document.activeElement.tabIndex < board.length)
-        {
-            board[document.activeElement.tabIndex].focus();
-        }
-        else if(e.keyCode == '13' || e.keyCode == '32')
-        {
-            board[document.activeElement.tabIndex-3].click();
+            board[enter_position].click();
         }
     }
-
     
     /* Add onclick attribute to each box and adds X and O's accordingly with specific style for each*/
     board[i].onclick = function() 
     {
-        if(currentPlayer === 'X'&& board[i].innerText==="")
+        if(currentPlayer === 'X' && board[i].innerText==="")
         {
             board[i].innerHTML= 'X';
             
@@ -71,7 +91,7 @@ for(let i=0; i<board.length; i++)
 }
 
 //Reloads the page when you click the restart button
-document.getElementById("button").addEventListener("click", function(){
+document.getElementById("restart_button").addEventListener("click", function(){
     window.location.reload();
   });
 
