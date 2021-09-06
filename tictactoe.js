@@ -99,19 +99,10 @@ document.getElementById("restart_button").addEventListener("click", function(){
 
 function checkWinner()
 {
-    let wrapper = document.getElementById("wrapper");
-
-    let winner_wrapper = document.createElement("div");
+    let winner_wrapper = document.getElementById("winner_wrapper");
     winner_wrapper.tabIndex = 12;
-    winner_wrapper.style.cssText = "display: flex; flex-direction: row; justify-content: center; font-size: 28px; font-weight: bold; margin-top: 20px;";
 
-    
-    let winner_type = document.createElement("p");
-    winner_type.style.cssText = "color: #2b81a6; text-align: left; font-size: 38px; padding-right: 15px; line-height: 34px; margin: 0 0 15px 0;";
-
-    let winner_sentence = document.createElement("p");
-    winner_sentence.innerHTML = " is the Winner!";
-    winner_sentence.style.cssText = "color: black; font-size: 28px; margin: 0 0 15px 0;"
+    let winner_type = document.getElementById("winner_type");
 
     /* Checks all the possible ways to win. Does not check for ties */
     const winnerExist = (board[0].innerText + board[1].innerText + board[2].innerText === 'XXX' || board[0].innerText + board[1].innerText + board[2].innerText === 'OOO') ||
@@ -140,10 +131,10 @@ function checkWinner()
             winner_type.style.color = "#5e2ba6";
         }
 
-        winner_wrapper.append(winner_type, winner_sentence);
-        wrapper.appendChild(winner_wrapper);
+        //make the result visible
+        winner_wrapper.style.display = "flex";
         winner_wrapper.focus();
-
+        
         return true;
     }
     else if(noWinner) 
@@ -152,8 +143,12 @@ function checkWinner()
         winner_type.style.color = "black"
         winner_type.style.paddingRight = 0;
 
-        winner_wrapper.appendChild(winner_type);
-        wrapper.appendChild(winner_wrapper);
+        //Hide "is the winner!"
+        let winner_sentence = document.getElementById("winner_sentence");
+        winner_sentence.style.display = 'none';
+
+        //make the result visible
+        winner_wrapper.style.display = "flex";
         winner_wrapper.focus();
 
         return true;
