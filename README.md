@@ -1,9 +1,10 @@
-# cps353-2019-tictactoe-hyung
+# Tic-Tac-Toe Game
+##The following project was assigned as a homework for CPS 353 Internet Programming.
 
-I inserted tabindex attribute to each components of the website so that it iterates through all the boxes of the tictactoe board when you click the tab key. I also added aria-label to each box so that when you use a screen reader, the voice reader explains to you what position you are in the tictactoe board. For example, if you are on the top, right corner, the screen reader will say, "Row 1, Column 3". You can also navigate the board with the arrow keys and also place the Xs and Os by pressing enter. As you navigate, there is a blue highlight around your location, putting focus on specific places on the website. When someone wins, the focus is put on the text that pops up on the bottom of the page.
+In 2021, I decided to upgrade this project by refactoring the code and adding additional style onto the project.
 
-When I ran lighthouse, it didn't like how I used tabindex, but I could not find a way to not use it since I was creating my own iterations across the board. Also, I wanted the screenreader to say whose turn it is every time a player finishes their turn, but I couldn’t figure out to do that without moving the current focus to the heading "Next Player:".
+##SHOWCASING SKILLS IN:
 
-My current tictactoe board fulfills 1.1.1, Non-text Content, because it provides descriptive identification of the non-text content like the current location of the board. There is no media or excessive text in this project. There is a good contrast of colors since I am using basic black and white colors and two distinct colors, red and blue, for the X and Os. The contrast ratio is 21:1 so it fulfills the AAA requirement. The keyboard accessibility is mostly met. It can do the major functions, but arrow keys cannot move the focus outside of the board. You have to use the tab key. Overall, it meets the AA requirements because of the limited accessibility of the keyboard and screen reader's audio, the user not being able to choose the foreground and background colors, and all the text being justified in the center.
-
-To fulfill the AAA requirement, all functionality should be operable through a keyboard interface such as moving through the website with arrow keys even outside the board. There needs to be context-sensitive help, and I feel like my website is lacking in that area because the screen reader does not tell whose turn it is after each play. The user should also be able to choose the foreground and background colors of the website. I think I was able to hit the major points of the AAA requirements, but not enough of it.
+1. Javascript
+2. Refactoring Code
+3. UI Design
