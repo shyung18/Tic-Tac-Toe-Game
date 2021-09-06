@@ -1,63 +1,110 @@
-body 
-{
-    background-color: black;
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #0c364d;
+
+  font-family: monospace;
 }
 
-h2
-{
-    text-align: center;
-    color: snow;
+h2 {
+  text-align: center;
+  color: #0c364d;
+  font-size: 22px;
+
+  margin: 0 0 20px 0px;
+  padding-right: 8px;
 }
 
-h1
-{
-    text-align: center;
-    color: white;
+h1 {
+  text-align: center;
+  color: #0c364d;
+  font-size: 28px;
+
+  margin: 15px 0 5px 0;
 }
 
-p
-{
-    text-align: center;
-    color: white;
-    font-size: 2em;
+p {
+  text-align: center;
+  color: #defafa;
+  font-size: 2em;
 }
 
-button 
-{
-    display: block;
-    margin: 0 auto;
-    margin-top: 2em;
+button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 2em;
+
+  padding: 10px;
+  border-radius: 5px;
+
+  background-color: #fff5f6;
+
+  font-weight: bold;
+}
+
+#wrapper {
+  width: 30%;
+  height: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 0px;
+
+  display: flex;
+  flex-direction: column;
+  border-radius: 3%;
+  border: solid 5px;
+
+  background-color: #8fdadb;
+}
+
+#next_player_wrapper {
+  display: flex;
+  flex-direction: row;
+
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*margin-left and right centers the board in the middle*/
-table 
-{
-    border-collapse: collapse;
-    background-color: black;
-    margin-left: auto;
-    margin-right: auto;
+table {
+  border-collapse: collapse;
+  background-color: #8fdadb;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#nextPlayer
-{
-    color: firebrick;
+#nextPlayer {
+  color: #5e2ba6;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 30px;
 }
 
-td 
-{
-    border: 1px solid white;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    font-size: 100%;;
+td {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+
+  font-size: 30px;
+  font-weight: bold;
 }
 
-#box1, #box2, #box3, #box4, #box5, #box6
-{
-    border-bottom: 1px solid white;
+#box1,
+#box2,
+#box3,
+#box4,
+#box5,
+#box6 {
+  border-bottom: 3px solid #629999;
 }
 
-#box1, #box2, #box4, #box5, #box7, #box8
-{
-    border-right: 1px solid white;
+#box1,
+#box2,
+#box4,
+#box5,
+#box7,
+#box8 {
+  border-right: 3px solid #629999;
 }

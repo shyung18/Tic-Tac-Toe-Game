@@ -57,21 +57,23 @@ for(let i=0; i<board.length; i++)
         if(currentPlayer === 'X' && board[i].innerText==="")
         {
             board[i].innerHTML= 'X';
-            
-            board[i].style.color = "firebrick";
+            board[i].style.color = "#5e2ba6";
+
             currentPlayer = 'O';
             
             next_player.innerHTML = currentPlayer; 
-            next_player.style.color = "dodgerblue";
+            next_player.style.color = "#2b81a6";
 
         }
         else if(currentPlayer === 'O'&& board[i].innerText==="")
         {
             board[i].innerHTML = 'O';
-            board[i].style.color = "dodgerblue";
+            board[i].style.color = "#2b81a6";
+
             currentPlayer = 'X';
+
             next_player.innerHTML = currentPlayer; 
-            next_player.style.color = "firebrick";
+            next_player.style.color = "#5e2ba6";
         }
 
         if(checkWinner())
@@ -97,8 +99,19 @@ document.getElementById("restart_button").addEventListener("click", function(){
 
 function checkWinner()
 {
-    let winner = document.createElement("p");
-    winner.tabIndex = 12;
+    let wrapper = document.getElementById("wrapper");
+
+    let winner_wrapper = document.createElement("div");
+    winner_wrapper.tabIndex = 12;
+    winner_wrapper.style.cssText = "display: flex; flex-direction: row; justify-content: center; font-size: 28px; font-weight: bold; margin-top: 20px;";
+
+    
+    let winner_type = document.createElement("p");
+    winner_type.style.cssText = "color: #2b81a6; text-align: left; font-size: 38px; padding-right: 15px; line-height: 34px; margin: 0 0 15px 0;";
+
+    let winner_sentence = document.createElement("p");
+    winner_sentence.innerHTML = " is the Winner!";
+    winner_sentence.style.cssText = "color: black; font-size: 28px; margin: 0 0 15px 0;"
 
     /* Checks all the possible ways to win. Does not check for ties */
     const winnerExist = (board[0].innerText + board[1].innerText + board[2].innerText === 'XXX' || board[0].innerText + board[1].innerText + board[2].innerText === 'OOO') ||
@@ -119,23 +132,29 @@ function checkWinner()
         /* Display who the winner is depending on who ended the game*/
         if(currentPlayer === "X")
         {
-            winner.innerHTML = "O is the Winner";
+            winner_type.innerHTML = "O";
         }
         else
         {
-            winner.innerHTML = "X is the Winner";
+            winner_type.innerHTML = "X";
+            winner_type.style.color = "#5e2ba6";
         }
 
-        document.body.appendChild(winner);
-        winner.focus();
+        winner_wrapper.append(winner_type, winner_sentence);
+        wrapper.appendChild(winner_wrapper);
+        winner_wrapper.focus();
 
         return true;
     }
     else if(noWinner) 
     {
-        winner.innerHTML = "Tie!";
-        document.body.appendChild(winner);
-        winner.focus();
+        winner_type.innerHTML = "Tie!";
+        winner_type.style.color = "black"
+        winner_type.style.paddingRight = 0;
+
+        winner_wrapper.appendChild(winner_type);
+        wrapper.appendChild(winner_wrapper);
+        winner_wrapper.focus();
 
         return true;
     }
